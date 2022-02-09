@@ -1,4 +1,3 @@
-import random as random
 from sys import byteorder
 
 INT_SIZE = 4
