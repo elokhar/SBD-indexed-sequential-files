@@ -29,7 +29,7 @@ class record:
     def set_ov(self, ov_index):
         self.ov_index = ov_index
     
-    def __str__(self):
+    def __str__(self, show_ov = False):
         return("Record "+str(self.key)+": "+str(self.c)+" "+str(self.m)+" "+str(self.dT))
 
     def __bytes__(self):
