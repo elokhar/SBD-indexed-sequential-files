@@ -4,18 +4,17 @@ import buffer as b
 BLOCKING_FACTOR = 4
 PAGE_SIZE = r.RECORD_SIZE * BLOCKING_FACTOR
 
-class data_area():
-    
-    datafile = None
-    buffer = None
+class data_area:
+
 
     def __init__(self, datafile_name):
         self.datafile = open(datafile_name, "w+b")
         self.buffer = b.buffer()
 
     def __del__(self):
+        if self.buffer.get_page_number() != -1:
+            self.write_page_to_file()
         self.datafile.close()
-
 
     def read_record(self, index):  #function for reading using record index
         no_record_at_index = False
@@ -46,7 +45,6 @@ class data_area():
             else:
                 assert False, "Index for writing is too big"
 
-
     def load_page_to_buffer(self, index):
         needed_page_number = index // BLOCKING_FACTOR
         if (self.buffer.get_page_number() != needed_page_number):
@@ -54,9 +52,6 @@ class data_area():
                 self.write_page_to_file()
             self.read_page_to_buffer(needed_page_number)
         
-
-
-
     def read_page_to_buffer(self, page_number):
         buffer = self.buffer
         file = self.datafile
@@ -68,7 +63,6 @@ class data_area():
                 break               #stop reading if end of file
             buffer.append(r.record.from_bytes(record_bytes))
         buffer.set_page_number(page_number)
-
 
     def write_page_to_file(self):
         file = self.datafile

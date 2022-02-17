@@ -1,39 +1,35 @@
 from record import *
 from data_area import *
 from buffer import *
+import database as db
 
-main_area = data_area("main_file.dat")
+database = db.database("main_file.dat", "overflow_area.dat")
 
 
-for i in range(10):
-    main_area.write_record(i, record(i, 16*i+1, 16*i+2, 16*i+3, i+1))
+for i in range(1, 10, 1):
+    database.add_record(record(5*i, 16*i+1, 16*i+2, 16*i+3))
 
-main_area.write_record(0,record(0,0,0,0))
-main_area.write_record(7,record(7,7,7,7,7))
-main_area.write_record(11, record(10,10,10,10))
+database.add_record(record(7,7,7,7))
+database.add_record(record(8,8,8,8))
 
-test_record = main_area.read_record(0)
-index = 1
-while(test_record != None):
-    print(str(test_record))
-    test_record = main_area.read_record(index)
-    index += 1
+database.add_record(record(17,6,8,5))
+database.add_record(record(18,8,9,8))
 
-# main_file.write(bytes(record(0,3,4,5,0)))
-# main_file.write(bytes(record(2,23,24,25,2)))
-# main_file.write(bytes(record(7,73,74,75)))
-# main_file.flush()
+database.add_record(record(6,6,8,8))
 
-# record1 = read_record(main_file, 0)
-# index = 1
-# while(record1 != None):
-#     print(str(record1))
-#     record1 = read_record_from_overflow(main_file, index)
-#     index += 1
+database.delete_record(5)
+database.delete_record(18)
+database.update_record(15, record(15,1,1,1))
+database.update_record(7, record(8,8,8,8))
 
-# read_page_to_buffer(main_file, main_buffer, 0)
-# main_buffer.clear()
-# main_buffer.append(record(6,61,62,63))
-# main_buffer.append(record(8,81,82,83,3))
-# write_page_to_file(main_file, main_buffer)
-pass
+print(str(database.read_record(5)))
+print(str(database.read_record(7)))
+print(str(database.read_record(0)))
+print(str(database.read_record(10)))
+print(str(database.read_record(18)))
+
+
+
+
+
+

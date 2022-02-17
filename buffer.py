@@ -1,7 +1,10 @@
 class buffer:
 
-    data = []
-    stored_page_number = -1  
+    
+    def __init__(self):
+        self.data = []
+        self.stored_page_number = -1  
+
 
     def get_data(self, position):
         return self.data[position]
@@ -10,7 +13,7 @@ class buffer:
         return self.stored_page_number
 
     def set_page_number(self, number):
-        self.stored_page_number=number
+        self.stored_page_number = number
     
     def __getitem__(self, key):
         return self.data[key]
