@@ -18,10 +18,6 @@ class database:
         guardian_record.mark_deleted()
         self.add_record(guardian_record)
 
-    # def __del__(self):
-    #     del self.main_area
-    #     del self.overflow_area
-    #     del self.index
 
     def add_record(self, new_record):
         if not self.index:
