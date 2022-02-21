@@ -1,34 +1,42 @@
-from record import *
-from data_area import *
-from buffer import *
-import database as db
+from interface import run_interface
 
-database = db.database("main_file.dat", "overflow_area.dat")
+run_interface()
 
+# for i in range(1, 11, 1):
+#     dbms.add_record(record(5*i, 16*i+1, 16*i+2, 16*i+3))
 
-for i in range(1, 10, 1):
-    database.add_record(record(5*i, 16*i+1, 16*i+2, 16*i+3))
+# dbms.add_record(record(7,7,7,7))
+# dbms.add_record(record(8,8,8,8))
 
-database.add_record(record(7,7,7,7))
-database.add_record(record(8,8,8,8))
-
-database.add_record(record(17,6,8,5))
-database.add_record(record(18,8,9,8))
-
-database.add_record(record(6,6,8,8))
-
-database.delete_record(5)
-database.delete_record(18)
-database.update_record(15, record(15,1,1,1))
-database.update_record(7, record(8,8,8,8))
-
-print(str(database.read_record(5)))
-print(str(database.read_record(7)))
-print(str(database.read_record(0)))
-print(str(database.read_record(10)))
-print(str(database.read_record(18)))
+# dbms.add_record(record(17,6,8,5))
+# dbms.add_record(record(18,8,9,8))
+# dbms.add_record(record(16,8,9,16))
 
 
+# dbms.add_record(record(3,6,8,8))
+# dbms.add_record(record(6,6,8,8))
+
+# dbms.delete_record(5)
+# dbms.delete_record(18)
+# dbms.update_record(15, record(15,1,1,1))
+# dbms.update_record(7, record(9,9,9,9))
+
+# print(str(dbms.read_record(5)))
+# print(str(dbms.read_record(7)))
+# print(str(dbms.read_record(0)))
+# print(str(dbms.read_record(10)))
+# print(str(dbms.read_record(18)))
+
+# dbms.print_db()
+
+# dbms.reorganize()
+
+# # dbms.add_record(record(0x2f,8,9,8))
+# # dbms.add_record(record(23,8,9,8))
+# # dbms.add_record(record(21,8,9,16))
+
+
+# dbms.close_current_db()
 
 
 

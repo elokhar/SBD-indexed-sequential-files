@@ -4,6 +4,7 @@ class buffer:
     def __init__(self):
         self.data = []
         self.stored_page_number = -1  
+        self.is_modified = False
 
 
     def get_data(self, position):
@@ -20,6 +21,7 @@ class buffer:
 
     def __setitem__(self, key, value):
         self.data[key] = value
+        self.is_modified = True
 
     def __len__(self):
         return len(self.data)
@@ -29,4 +31,5 @@ class buffer:
 
     def append(self, value):
         self.data.append(value)
+        self.is_modified = True
     
