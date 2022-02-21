@@ -22,7 +22,6 @@ def delete_record(key):
     curr_db.delete_record(key)
     curr_db.print_rw()
 
-
 def reorganize():
     print("Reorganizing database")
     global curr_db
@@ -63,7 +62,6 @@ def reorganize():
     curr_db = new_db
     curr_db.print_rw()
     #curr_db.print_database()
-    
     
 def print_db():
     curr_db.print_database()

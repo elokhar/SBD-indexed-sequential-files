@@ -6,8 +6,6 @@ NULL_INDEX = -1
 
 class record:
     
-
-
     def __init__(self, key, c, m, dT, ov_index=NULL_INDEX, deleted=0):
         self.key = key
         self.c = c

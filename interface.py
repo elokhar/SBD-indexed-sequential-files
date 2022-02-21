@@ -1,4 +1,3 @@
-from ast import arg
 import dbms
 from sys import stdin
 import record as r
